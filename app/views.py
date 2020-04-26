@@ -1,6 +1,21 @@
 from app import app
-from app.bucketitems.helper import response
+from app.helper import response
+from app.sentiment import sentiment, scrape
+import flask
 
+@app.route('/sentimentext/api/analyze')
+def analyze():
+    url = flask.request.args.get('url')
+    title, text, err = scrape(url)
+    title_sent = sentiment(title)
+    text_sent = sentiment(text)
+    res = {'title': title,
+        'sentiment': { 
+            'title': {'polarity': title_sent.polarity,
+                        'subjectivity': title_sent.subjectivity},
+            'text': {'polarity': text_sent.polarity,
+                        'subjectivity': text_sent.subjectivity}}}
+    return flask.jsonify(res)
 
 @app.errorhandler(404)
 def route_not_found(e):
