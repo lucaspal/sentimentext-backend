@@ -1,11 +1,14 @@
 from app import app
 from app.helper import response
 from app.sentiment import sentiment, scrape
+from urllib.parse import urlparse
 import flask
 
 @app.route('/sentimentext/api/analyze')
 def analyze():
-    url = flask.request.args.get('url')
+    raw_url = flask.request.args.get('url')
+    url = urlparse(raw_url).geturl()
+    
     title, text, err = scrape(url)
     title_sent = sentiment(title)
     text_sent = sentiment(text)
