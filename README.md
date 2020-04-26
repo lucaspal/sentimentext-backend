@@ -1,47 +1,49 @@
-astroid==2.3.3
-beautifulsoup4==4.9.0
-certifi==2020.4.5.1
-chardet==3.0.4
-click==7.1.1
-colorama==0.4.3
-cssselect==1.1.0
-cycler==0.10.0
-feedfinder2==0.0.4
-feedparser==5.2.1
-Flask==1.1.2
-gunicorn==20.0.4
-idna==2.9
-isort==4.3.21
-itsdangerous==1.1.0
-jieba3k==0.35.1
-Jinja2==2.11.2
-joblib==0.14.1
-kiwisolver==1.2.0
-lazy-object-proxy==1.4.3
-lxml==4.5.0
-MarkupSafe==1.1.1
-matplotlib==3.2.1
-mccabe==0.6.1
-newspaper3k==0.2.8
-nltk==3.5
-numpy==1.18.3
-pandas==1.0.3
-Pillow==7.1.2
-pylint==2.4.4
-pyparsing==2.4.7
-python-dateutil==2.8.1
-pytz==2019.3
-PyYAML==5.3.1
-regex==2020.4.4
-requests==2.23.0
-requests-file==1.5.1
-six==1.14.0
-soupsieve==2.0
-textblob==0.15.3
-tinysegmenter==0.3
-tldextract==2.2.2
-tqdm==4.45.0
-typed-ast==1.4.1
-urllib3==1.25.9
-Werkzeug==1.0.1
-wrapt==1.11.2
+# Bucket List API(Heroku deployment)
+
+The api enables you to create/ register a user within the application.
+- **Checkout my [Post](https://medium.com/@johnkagga/deploying-a-python-flask-app-to-heroku-41250bda27d0)
+on how to deploy this application to Heroku**
+
+- **I wrote up a post on medium of how I developed this
+API, you can find it [here](https://medium.com/@johnkagga/how-i-developed-an-api-in-python-using-flask-4e388674f1)**
+## Usage
+
+## Starting the application
+In order to run the application set the environment
+variable below.
+```
+Windows
+set FLASK_APP=run.py
+
+Unix
+export FLASK_APP=run.py
+```
+Then run the command below to start the application.
+```
+flask run
+```
+
+## API Documentation
+
+The api documentation is hosted as the homepage
+of the application.
+
+
+## Running tests
+Before running the application tests, update your env variables
+```
+export  APP_SETTINGS=app.config.TestingConfig
+export DATABASE_URL_TEST=<postgres database url>
+```
+
+### Running tests without coverage
+You can now run the tests from the terminal
+```
+python manage.py test
+```
+
+### Running tests with coverage
+You can also run tests with coverage by running this command in the terminal
+```
+nosetests --with-coverage --cover-package=app
+```
